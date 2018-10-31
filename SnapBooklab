@@ -1,0 +1,66 @@
+/**
+ * @author Eric R. Newton
+ * @since 10/30/2018
+ */
+import java.util.Scanner;
+public class SnapBookLab{
+public static Scanner input = new Scanner(System.in);
+	public static void main(String [] args){
+		header(); //call the header method
+	  	String p = createPassword(); //call the create password method
+	  	boolean isPassOK = verifyPassword(p);
+	  	System.out.println(isPassOK);
+		
+  }
+
+/**
+ * This is a void method that will return the header 
+ * of the program. 
+ * 
+ */
+public static void header(){
+System.out.println("Welcome to SnapBook. Please enter a password" 
+                  +"containint the following");
+System.out.println("- At Least 8 Characters in Length");
+System.out.println("- One Uppper Case Letter");
+System.out.println("- One Lower Case Letter");
+System.out.println("- At least One Number");
+}
+
+/**
+ * This method takes and string as a password from the user
+ * @return a string, the password the user enters
+ */
+public static String createPassword() {
+	String password = input.nextLine();
+	return password;
+}
+/**
+ * This method will verify the password
+ * @param p, a string whose length will be verified
+ * @return
+ */
+public static boolean verifyPassword(String p) {
+	boolean isLength = false, isUpperC = false, isLowerC = false, isNumber = false;
+	
+	for (int i= 1; i< p.length(); i++) {
+		if(p.length() >= 8) {
+			isLength = true;
+			}
+		char ch = p.charAt(i);
+		 if(Character.isUpperCase(ch)) {
+			isUpperC = true;
+		}
+		else if(Character.isLowerCase(ch)) {
+			isLowerC=true;
+		}
+		else if(Character.isDigit(ch)) {
+			isNumber=true;
+		}
+		if (isLength && isUpperC && isLowerC && isNumber)
+			return true;
+	}
+	return true;
+	
+}
+}
